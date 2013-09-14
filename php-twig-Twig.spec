@@ -1,5 +1,6 @@
 %define		status		stable
 %define		pearname	Twig
+%define		php_min_version 5.2.0
 %include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - Twig is a PHP template engine
 Name:		php-twig-Twig
@@ -15,6 +16,15 @@ BuildRequires:	php-packagexml2cl
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.610
+Requires:	php(core) >= %{php_min_version}
+Requires:	php(ctype)
+Requires:	php(date)
+Requires:	php(dom)
+Requires:	php(hash)
+Requires:	php(json)
+Requires:	php(mbstring)
+Requires:	php(pcre)
+Requires:	php(spl)
 Requires:	php-channel(pear.twig-project.org)
 Requires:	php-pear
 BuildArch:	noarch
