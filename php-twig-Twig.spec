@@ -1,18 +1,16 @@
-%define		status		stable
 %define		pearname	Twig
-%define		php_min_version 5.2.0
+%define		php_min_version 5.2.4
 %include	/usr/lib/rpm/macros.php
-Summary:	%{pearname} - Twig is a PHP template engine
-Name:		php-twig-Twig
-Version:	1.13.2
+Summary:	The flexible, fast, and secure template engine for PHP
+Name:		php-twig-%{pearname}
+Version:	1.15.1
 Release:	1
 License:	BSD Style
 Group:		Development/Languages/PHP
 Source0:	http://pear.twig-project.org/get/%{pearname}-%{version}.tgz
-# Source0-md5:	2832f6b1b6834f3a08e5a082e61297a9
-URL:		http://pear.twig-project.org/package/Twig/
+# Source0-md5:	f4c06949bb68c2186688e7a8422fbd47
+URL:		http://twig.sensiolabs.org/
 BuildRequires:	php-channel(pear.twig-project.org)
-BuildRequires:	php-packagexml2cl
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.610
@@ -27,6 +25,7 @@ Requires:	php(pcre)
 Requires:	php(spl)
 Requires:	php-channel(pear.twig-project.org)
 Requires:	php-pear
+Suggests:	php(xdebug)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,13 +35,19 @@ Twig is a template language for PHP.
 Twig uses a syntax similar to the Django and Jinja template languages
 which inspired the Twig runtime environment.
 
-In PEAR status of this package is: %{status}.
+- Fast: Twig compiles templates down to plain optimized PHP code. The
+  overhead compared to regular PHP code was reduced to the very minimum.
+- Secure: Twig has a sandbox mode to evaluate untrusted template code.
+  This allows Twig to be used as a template language for applications
+  where users may modify the template design.
+- Flexible: Twig is powered by a flexible lexer and parser. This
+  allows the developer to define its own custom tags and filters, and
+  create its own DSL.
 
 %prep
 %pear_package_setup
 
-%build
-packagexml2cl package.xml > ChangeLog
+mv docs/Twig/* .
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -54,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog install.log
-%doc docs/Twig/*
+%doc install.log
+%doc README.rst CHANGELOG LICENSE
 %{php_pear_dir}/.registry/.channel.*/*.reg
 %{php_pear_dir}/Twig
