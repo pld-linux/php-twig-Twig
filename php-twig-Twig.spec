@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	The flexible, fast, and secure template engine for PHP
 Name:		php-twig-%{pearname}
-Version:	1.15.1
+Version:	1.16.0
 Release:	1
 License:	BSD Style
 Group:		Development/Languages/PHP
 Source0:	http://pear.twig-project.org/get/%{pearname}-%{version}.tgz
-# Source0-md5:	f4c06949bb68c2186688e7a8422fbd47
+# Source0-md5:	1da4723f6919fb76d51ad986fc4a0c66
 URL:		http://twig.sensiolabs.org/
 BuildRequires:	php-channel(pear.twig-project.org)
 BuildRequires:	php-pear-PEAR
