@@ -1,6 +1,5 @@
 %define		pearname	Twig
 %define		php_min_version 5.2.4
-%include	/usr/lib/rpm/macros.php
 Summary:	The flexible, fast, and secure template engine for PHP
 Name:		php-twig-%{pearname}
 Version:	1.29.0
